@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, textarea, button {
+      padding: 8px;
+      margin: 5px;
+      width: 300px;
+      display: block;
+    }
+    .highlight {
+      border: 2px solid blue;
+    }
+  </style>
+  <script>
+    // Validation function: allows only letters and spaces
+    function validateInput(event) {
+      let char = event.key;
+      if (!/^[a-zA-Z ]$/.test(char)) {
+        event.preventDefault();
+      }
+    }
+
+    // Highlight field on hover
+    function highlightField(element) {
+      element.classList.add("highlight");
+    }
+
+    // Remove highlight when mouse leaves
+    function removeHighlight(element) {
+      element.classList.remove("highlight");
+    }
+
+    // Double-click submit confirmation
+    function submitForm() {
+      alert("Feedback submitted successfully!");
+    }
+  </script>
+</head>
+<body>
+  <h2>Customer Feedback Form</h2>
+  <form>
+    <!-- Name field with validation and hover highlight -->
+    Name: <br>
+    <input type="text"
+           onkeypress="validateInput(event)"
+           onmouseover="highlightField(this)"
+           onmouseout="removeHighlight(this)">
+    <br>
+
+    <!-- Feedback textarea with hover highlight -->
+    Feedback: <br>
+    <textarea
+           onmouseover="highlightField(this)"
+           onmouseout="removeHighlight(this)">
+    </textarea>
+    <br>
+
+    <!-- Submit button with double-click confirmation -->
+    <button type="button" ondblclick="submitForm()">
+      Submit (Double Click)
+    </button>
+  </form>
+</body>
+</html>
